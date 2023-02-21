@@ -1,18 +1,26 @@
 import Card from 'react-bootstrap/Card';
 
-function WeatherCard() {
+function WeatherCard(props) {
+  const weather = props.weather;
+
   return (
     <Card>
-      <Card.Body>
-        <Card.Title>Card Title</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-        <Card.Text>
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </Card.Text>
-        <Card.Link href="#">Card Link</Card.Link>
-        <Card.Link href="#">Another Link</Card.Link>
-      </Card.Body>
+      <div key={weather.id}>
+        <Card.Body>
+          <Card.Title>
+            <h1>{weather.date}</h1>
+          </Card.Title>
+          <Card.Text>
+            <div id="icon">{weather.image}</div>
+            <div id="description">{weather.description}</div>
+            <div>
+              <div id="minTemp">{weather.minTemp}</div>
+              <div id="maxTemp">{weather.maxTemp}</div>
+            </div>
+            <div id="windSpeed">{weather.windSpeed}</div>
+          </Card.Text>
+        </Card.Body>
+      </div>
     </Card>
   );
 }
