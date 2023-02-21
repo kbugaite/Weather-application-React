@@ -20,8 +20,8 @@ extensions
     data time window
 
 ///////// TASKS \\\\\\\\\\\\\\\
-    Component NAVBAR
-    Component CARD
+    Component NAVBAR (complete {except css})
+    Component CARD (complete {except css})
     Weather API
         Day 
         Date 
@@ -29,12 +29,32 @@ extensions
         Description
         Min Temp
         Max Temp 
-        Wind Speed
+        Wind Speed 
     Geocoding API (extension)
         lat, long ==> searched loc 
-    Loc search bar (extension)
+    Loc search bar (extension) {needs to change states}
 
-        
+//////////// TODO \\\\\\\\\\\
+After employabilit event, check in with Clayton and Moad to get them up to speed with the progress we made - make sure they've actually had the chance to learn something and not just sit back and let things happen
+
+Figure out how to extract data from API call for weather 
+    Just one day to begin with
+    Move to 5 days after 
+
+    const weather =({ 
+    day: {api-weather.day},
+    date: {api-weather.date},
+    ...
+    )}
+    FOR EXAMPLE
+
+Figure out how to convert either UNIX time or dt_txt into better looking time   
+    Wednesday 22 Feb for example
+
+Link search in navbar change locations ---> needs to hook into API call
+
+//////////// BUGS \\\\\\\\\\\\
+ 
 
 
 
