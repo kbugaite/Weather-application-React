@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import { HashRouter } from 'react-router-dom';
+import NavigationBar from './components/NavigationBar'
+import WeatherCard from './components/WeatherCard';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <NavigationBar />
+      <div className="App">
+        <h1 className=''> Weather App</h1>
+        <h2> Location</h2>
+        <h3> Sheffield</h3>
+        <p> Here goes some cards to show the weather for the location</p>
+      </div>
+      <WeatherCard />
+    </Container>
   );
 }
 
 export default App;
+
+App()

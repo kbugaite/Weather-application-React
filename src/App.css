@@ -1,4 +1,6 @@
-.App {
+/* //////////////////////////// REACT PRE-GEN \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* .App {
+
   text-align: center;
 }
 
@@ -35,4 +37,58 @@
   to {
     transform: rotate(360deg);
   }
+} */
+
+body {
+  background-image: url(./resources/background_veve.jpg);
+  background-position: center;
+  font-family: monospace;
+  font-style: italic;
 }
+
+:root {
+  --overlay-full: rgb(255,255,255);
+  --overlay-mid: rgba(255,255,255,.5);
+  --overlay-dim: rgba(255,255,255,.2);
+
+  --text-bright: rgb(255,255,255);
+  --text-mid: rgb(180,180,180);
+  --font-large: 32pt;
+  --font-med: 16pt;
+
+  --borders: 2px solid var(--text-bright);
+
+}
+/* //////////////////////////// VAR \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+.nav {
+  background-color: var(--overlay-full);
+  top: 0px;
+  position: absolute;
+}
+
+/* //////////////////////////// CONTAINERS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+.border{
+  border: var(--borders);
+}
+/* //////////////////////////// TEXT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-bright);
+  text-transform:uppercase;  
+}
+
+p, span, a {
+  font-size:var(--font-med);
+  color: var(--text-mid);
+}
+
+h1, h2 {
+  font-size: var(--font-large);
+}
+
+h1 {
+  font-weight: 800;
+}
+
+/* //////////////////////////// CARDS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
