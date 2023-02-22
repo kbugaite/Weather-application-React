@@ -20,7 +20,7 @@ function WeatherCard(props) {
               <div id="maxTemp">{weather.maxTemp}</div>
             </div>
             <div id="windSpeed">{weather.windSpeed}</div>
-            <img src = { arrowIcon } 
+            <img src = { arrow } 
             // add wind direction arrow icon here AFTER it has been rotated
             // style={[
             //   {
