@@ -25,7 +25,7 @@ export class ApiClient {
 
     fetchWeather = async (lat, lon, key) => {
         const weather = await this.getRequest(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`)
-        console.log(weather);
+        // console.log(weather);
         return weather.data;
     }
 
@@ -38,26 +38,5 @@ export class ApiClient {
 }
 
 
-/* API Weather Datamap
-ID 
-    Object/data/list/Object0/weather/id
-Day
-    Object/data/list/Object0/dt_txt  (probably needs reformatting)
-Date
-    Object/data/list/Object0/dt_txt  (probably needs reformatiing)
-Icon
-    Object/data/list/Object0/weather/icon
-Description
-    Object/data/list/Object0/weather/description
-Min Temp
-    Object/data/list/Object0/main/temp_min
-Max Temp
-    Object/data/list/Object0/main/temp_max
-Wind Speed
-    Object/data/list/Object0/wind/speed
-
-Access data for indexes accesaing Object[0,8,16,24,32] for all five days
-
-*/
 
 

@@ -21,7 +21,7 @@ const searchPressed = (event) => {
 
   return (
     <Container>
-      <Navbar>
+      <Navbar className="nav">
         <Container>
           <Navbar.Brand>WEATHER.APP</Navbar.Brand>
           <Form className="d-flex" onSubmit={searchPressed}>
