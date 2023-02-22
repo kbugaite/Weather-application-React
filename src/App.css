@@ -21,9 +21,9 @@ body {
 /* //////////////////////////// VAR \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
 .nav {
-  background-color: var(--overlay-full) !important;
-  top: 0px !important;
-  position: absolute !important;
+  background-color: var(--overlay-mid) !important;
+  /* top: 0px !important;
+  position: absolute !important; */
 }
 
 /* //////////////////////////// CONTAINERS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
@@ -50,5 +50,4 @@ h1, h2 {
 h1 {
   font-weight: 800;
 }
-
 /* //////////////////////////// CARDS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */

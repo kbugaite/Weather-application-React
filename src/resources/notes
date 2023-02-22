@@ -12,8 +12,6 @@ kristina
 moad
 chloe
 
-
-
 extensions
 
     location selection 
@@ -22,7 +20,7 @@ extensions
 ///////// TASKS \\\\\\\\\\\\\\\
     Component NAVBAR (complete {except css})
     Component CARD (complete {except css})
-    Weather API
+    Weather API (complete)
         Day 
         Date 
         Icon 
@@ -30,34 +28,57 @@ extensions
         Min Temp
         Max Temp 
         Wind Speed 
-    Geocoding API (extension)
+    Geocoding API (extension) (mostly complete -- needs searchbar integration)
         lat, long ==> searched loc 
-    Loc search bar (extension) {needs to change states}
+    Loc search bar (extension) {needs to change states} (ditto)
 
 //////////// TODO \\\\\\\\\\\
-After employabilit event, check in with Clayton and Moad to get them up to speed with the progress we made - make sure they've actually had the chance to learn something and not just sit back and let things happen
 
-Figure out how to extract data from API call for weather 
-    Just one day to begin with
-    Move to 5 days after 
+Apply and iterate weather data for other days to other cards
 
-    const weather =({ 
-    day: {api-weather.day},
-    date: {api-weather.date},
-    ...
-    )}
-    FOR EXAMPLE
+Integrate function calls rather than using buttons
 
-Figure out how to convert either UNIX time or dt_txt into better looking time   
-    Wednesday 22 Feb for example
+Figure out how to rotate wind direction icon
 
-Link search in navbar change locations ---> needs to hook into API call
+Link search in navbar change locations ---> needs to hook into API call || alert from responseStatusCheck on bad input
 
 //////////// BUGS \\\\\\\\\\\\
- 
+why the fuck none of formatiing work questionmark?
 
 
+//////////// REFERENCE \\\\\\\\
+/* API Weather Datamap
+ID 
+    Object/data/list/Object0/weather/id
+Day
+    Object/data/list/Object0/dt_txt  (probably needs reformatting)
+Date
+    Object/data/list/Object0/dt_txt  (probably needs reformatiing)
+Icon
+    Object/data/list/Object0/weather/icon
+Description
+    Object/data/list/Object0/weather/description
+Min Temp
+    Object/data/list/Object0/main/temp_min
+Max Temp
+    Object/data/list/Object0/main/temp_max
+Wind Speed
+    Object/data/list/Object0/wind/speed
 
+Access data for indexes accesaing Object[0,8,16,24,32] for all five days
+
+*/
+
+ // console.log(input)
+    // console.log(input.list[0].weather[0].id)
+    // console.log(input.list[0].dt_txt)
+    // console.log(input.list[0].dt)
+    // console.log(input.list[0].weather[0].icon)
+    // console.log(input.list[0].weather[0].description)
+    // console.log("Max temp: " + input.list[0].main.temp_max)
+    // console.log("Min temp: " + input.list[0].main.temp_min)
+    // console.log("Wind speed " + input.list[0].wind.speed)
+    // console.log("Wind direction " + input.list[0].wind.deg)
 
 
 
