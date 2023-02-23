@@ -34,16 +34,21 @@ extensions
 
 //////////// TODO \\\\\\\\\\\
 
-Apply and iterate weather data for other days to other cards
-
 Integrate function calls rather than using buttons
 
-Figure out how to rotate wind direction icon
+Link search in navbar change locations ---> needs to hook into API call || alert from responseStatusCheck on bad input // useEffect()
 
-Link search in navbar change locations ---> needs to hook into API call || alert from responseStatusCheck on bad input
+Make it look pretty (PINK REQUIRED!!)
+
+Install npm dotenv to not leak API key to github (who really cares anyway)
+
+Dont forget to upload to github || add homepage:"" pages url to package.json || 
+    git remote set-url origin https:taurehorn.github.io/api-weather-site
+    npm run deploy
 
 //////////// BUGS \\\\\\\\\\\\
-why the fuck none of formatiing work questionmark?
+
+IF ENCOUNTER RENDER BUGS REMEMBER TO SEE IF STRICT MODE IN INDEX.JS IS REENABLED
 
 
 //////////// REFERENCE \\\\\\\\
@@ -66,9 +71,6 @@ Wind Speed
     Object/data/list/Object0/wind/speed
 
 Access data for indexes accesaing Object[0,8,16,24,32] for all five days
-
-*/
-
  // console.log(input)
     // console.log(input.list[0].weather[0].id)
     // console.log(input.list[0].dt_txt)
