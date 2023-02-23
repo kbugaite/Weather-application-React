@@ -1,11 +1,13 @@
-import { HashRouter } from 'react-router-dom';
 import NavigationBar from './components/NavigationBar';
 import WeatherCard from './components/WeatherCard';
 import './App.css';
-import { Routes, Route } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { useState } from 'react';
 import { ApiClient } from "./apiClient";
+import { v4 as uuidv4 } from "uuid";
+
 
 function App() {
 
@@ -16,7 +18,6 @@ function App() {
   const [lat, changeLat] = useState("")
   const [lon, changeLon] = useState("")
   const [key] = useState("5b3e4dfb3379ee3cc89e90a04b8e31b3")
-  const [apiIndex, iterateApiIndex] = useState("0")
 
   const [weather, changeWeather] = useState({
     id: "",
@@ -37,73 +38,87 @@ function App() {
     changeLon(city.lon)
     console.log(location, lat, lon)
     // lat and lon only defined after getLocation() has fully run!!!!
-
   }
-  // calls 5 Day weather forecast API based on inputed latitude and longitude with an API key
+
+  // calls Weather API to get weather data, extract list and filter out unwanted arrays
   const getWeather = async () => {
     const input = await client.fetchWeather(lat, lon, key)
-    updateWeather(input, 0)
-    console.log(weather)
+    const inputArray = input.list;
+    const totalWeather = inputArray.filter((data /*alex dont delete*/, index) => (
+      index % 8 == 0))
+    updateWeather(totalWeather)
   }
 
-  const updateWeather = (input, index) => {
-    changeWeather({
-      // map over the object list instead of calling the specific indexes?
-      id: input.list[index].weather[0].id,    
-      date: interpretDate(input.list[index].dt_txt),
-      icon: convertIcon(input.list[index].weather[0].icon),
-      description: input.list[index].weather[0].description,
-      max_temp: input.list[index].main.temp_max,
-      min_temp: input.list[index].main.temp_min,
-      wind_dir: rotateWindIcon(input.list[index].wind.deg),
-      wind_speed: input.list[index].wind.speed
-    })
-  }
-
+  // shortens recieved API date to more readable format
   const interpretDate = (date) => {
-    const dateSlice = new Date(date).toString().slice(0,10);
+    const dateSlice = new Date(date).toString().slice(0, 10);
     return dateSlice
   }
-
+  // adds recieved API icon id to lookup url
   const convertIcon = (icon) => {
     const image = `http://openweathermap.org/img/wn/${icon}@2x.png`
     return image
   }
-  
-  const rotateWindIcon = (direction) => {   
 
-    // call wind direciton arrow in here 
-
-    // const image = "./resources/arrow.svg";
-    // image.style.transform = "rotate"(direction)
-    // return image
+  // filters out unwanted data from recieved API and updates weather object
+  const updateWeather = (input) => {
+    const forecastData = input.map(item => {
+      return {
+        id: uuidv4(),
+        date: interpretDate(item.dt_txt),
+        icon: convertIcon(item.weather[0].icon),
+        description: item.weather[0].description,
+        max_temp: item.main.temp_max,
+        min_temp: item.main.temp_min,
+        wind_dir: item.wind.deg,
+        wind_speed: item.wind.speed
+      }
+    })
+    changeWeather(forecastData)
   }
 
   return (
-    <Container>
-      <NavigationBar/>
-      <div className="App">
-        <h1 className=''> Weather App</h1>
-        <h2> Location</h2>
-        <h3> Sheffield</h3>
-        <p> Here goes some cards to show the weather for the location</p>
-      </div>
-      <button onClick={() => getLocation()}>get location data</button>
-      <button onClick={() => getWeather()}>get weather data</button>
-      <WeatherCard
-        weather={({
-          id: weather.id,
-          date: weather.date,
-          image: weather.icon,
-          description: weather.description,
-          minTemp: weather.min_temp,
-          maxTemp: weather.max_temp,
-          windSpeed: weather.wind_speed,
-          windDirection: weather.wind_dir
-        })} />
-    </Container>
-  );  
+    <>
+      <Container>
+        <NavigationBar />
+        <div className="App">
+          <h1 className=''> Weather App</h1>
+          <h2> Location</h2>
+          <h3> Sheffield</h3>
+          <p> Here goes some cards to show the weather for the location</p>
+        </div>
+        <button onClick={() => getLocation()}>get location data</button>
+        <button onClick={() => getWeather()}>get weather data</button>
+        
+          <div className="App">
+            {(typeof weather[0] != 'undefined') ? (
+              <div className='card-cont'>
+              <WeatherCard weather={weather[0]} />
+              <WeatherCard weather={weather[1]}/>
+              <WeatherCard weather={weather[2]} />
+              <WeatherCard weather={weather[3]} />
+              <WeatherCard weather={weather[4]} />
+              </div>              
+            ) : (
+              <div></div>
+            )}
+          </div>
+
+
+        {/* <Container>
+          <Row>
+            {weather?.map((item) => {
+              return (
+                <Col xs={12} md={12} lg={12} >
+                  <WeatherCard key={item.id} {...item} />
+                </Col>
+              );
+            })}
+          </Row>
+        </Container> */}
+      </Container>
+    </>
+  )
 }
 
 export default App;
-

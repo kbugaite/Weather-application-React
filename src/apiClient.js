@@ -20,7 +20,7 @@ export class ApiClient {
                 content: "Error getting data",
             };
         }
-    };
+    };  
 
 
     fetchWeather = async (lat, lon, key) => {
@@ -36,7 +36,3 @@ export class ApiClient {
 
     }
 }
-
-
-
-

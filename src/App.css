@@ -1,3 +1,4 @@
+@import "bootstrap/dist/css/bootstrap.css";
 body {
   background-image: url(./resources/background_veve.jpg);
   background-position: center;
@@ -6,12 +7,12 @@ body {
 }
 
 :root {
-  --overlay-full: rgb(255,255,255);
-  --overlay-mid: rgba(255,255,255,.5);
-  --overlay-dim: rgba(255,255,255,.2);
+  --overlay-full: rgb(255,0,210);
+  --overlay-mid: rgba(255,0,210,.5);
+  --overlay-dim: rgba(255,0,210,.2);
 
-  --text-bright: rgb(255,255,255);
-  --text-mid: rgb(180,180,180);
+  --text-bright: rgb(255, 46, 210);
+  --text-mid: rgb(255,0,210);
   --font-large: 32pt;
   --font-med: 16pt;
 
@@ -50,4 +51,25 @@ h1, h2 {
 h1 {
   font-weight: 800;
 }
+
 /* //////////////////////////// CARDS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+.card-cont{
+  display: flex;
+  flex-wrap: wrap;
+  
+}
+
+
+.card {
+  background-color: var(--overlay-dim);
+  box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
+  max-width: 40vw;
+  min-width: 20vw;
+  padding: 5px;
+  margin: 2px;
+}
+
+.windArrow {
+  max-width: 5em;
+  filter: invert();
+}
