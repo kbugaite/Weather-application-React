@@ -9,7 +9,7 @@ export class ApiClient {
             return Promise.reject(new Error(resObj.status));
         }
     };
-
+    
     getRequest = async (url) => {
         try {
             const req = await axios.get(url);
@@ -22,13 +22,11 @@ export class ApiClient {
         }
     };  
 
-
     fetchWeather = async (lat, lon, key) => {
         const weather = await this.getRequest(`http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key}&units=metric`)
         // console.log(weather);
         return weather.data;
     }
-
 
     fetchLocation = async (location, key) => {
         const locationVal = await this.getRequest(`http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=5&appid=${key}`)

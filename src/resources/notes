@@ -34,13 +34,7 @@ extensions
 
 //////////// TODO \\\\\\\\\\\
 
-Integrate function calls rather than using buttons
-
-Link search in navbar change locations ---> needs to hook into API call || alert from responseStatusCheck on bad input // useEffect()
-
 Make it look pretty (PINK REQUIRED!!)
-
-Install npm dotenv to not leak API key to github (who really cares anyway)
 
 Dont forget to upload to github || add homepage:"" pages url to package.json || 
     git remote set-url origin https:taurehorn.github.io/api-weather-site

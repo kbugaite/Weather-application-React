@@ -2,21 +2,17 @@ import NavigationBar from './components/NavigationBar';
 import WeatherCard from './components/WeatherCard';
 import './App.css';
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ApiClient } from "./apiClient";
 import { v4 as uuidv4 } from "uuid";
-
 
 function App() {
 
   const client = new ApiClient();
 
   const [location, changeLocation] = useState("Sheffield")
-  // need to figure out dynamic changing, rather than hardcoding at some point
-  const [lat, changeLat] = useState("")
-  const [lon, changeLon] = useState("")
+  const [lat, changeLat] = useState("53.3806626")
+  const [lon, changeLon] = useState("-1.4702278")
   const [key] = useState("5b3e4dfb3379ee3cc89e90a04b8e31b3")
 
   const [weather, changeWeather] = useState({
@@ -47,6 +43,7 @@ function App() {
     const totalWeather = inputArray.filter((data /*alex dont delete*/, index) => (
       index % 8 == 0))
     updateWeather(totalWeather)
+    console.log(weather)
   }
 
   // shortens recieved API date to more readable format
@@ -77,45 +74,48 @@ function App() {
     changeWeather(forecastData)
   }
 
+  //////////////// AUTO TRIGGER \\\\\\\\\\\\\\\\\
+
+  useEffect(() => {
+    getLocation();
+    getWeather();
+  }, [location, lat, lon]);
+
+
   return (
     <>
       <Container>
-        <NavigationBar />
+        <NavigationBar
+          setLocation={location => changeLocation(location)}
+        />
         <div className="App">
-          <h1 className=''> Weather App</h1>
-          <h2> Location</h2>
-          <h3> Sheffield</h3>
-          <p> Here goes some cards to show the weather for the location</p>
+
         </div>
-        <button onClick={() => getLocation()}>get location data</button>
-        <button onClick={() => getWeather()}>get weather data</button>
-        
-          <div className="App">
+
+        <div className='content p-4'>
+          <div>
             {(typeof weather[0] != 'undefined') ? (
-              <div className='card-cont'>
-              <WeatherCard weather={weather[0]} />
-              <WeatherCard weather={weather[1]}/>
-              <WeatherCard weather={weather[2]} />
-              <WeatherCard weather={weather[3]} />
-              <WeatherCard weather={weather[4]} />
-              </div>              
+              <div>
+                <div>
+                  <h3> Current location: {location}</h3>
+                </div>
+                <div className="card-cont d-flex flex-row">
+                  <WeatherCard weather={weather[0]} />
+                  <WeatherCard weather={weather[1]} />
+                  <WeatherCard weather={weather[2]} />
+                  <WeatherCard weather={weather[3]} />
+                  <WeatherCard weather={weather[4]} />
+                </div>
+              </div>
             ) : (
-              <div></div>
+              <div>
+                <p>Use the search bar in the top right to get the weather for a different location.</p>
+              </div>
             )}
           </div>
+        </div>
 
 
-        {/* <Container>
-          <Row>
-            {weather?.map((item) => {
-              return (
-                <Col xs={12} md={12} lg={12} >
-                  <WeatherCard key={item.id} {...item} />
-                </Col>
-              );
-            })}
-          </Row>
-        </Container> */}
       </Container>
     </>
   )

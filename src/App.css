@@ -1,4 +1,5 @@
 @import "bootstrap/dist/css/bootstrap.css";
+
 body {
   background-image: url(./resources/background_veve.jpg);
   background-position: center;
@@ -7,44 +8,84 @@ body {
 }
 
 :root {
-  --overlay-full: rgb(255,0,210);
-  --overlay-mid: rgba(255,0,210,.5);
-  --overlay-dim: rgba(255,0,210,.2);
+  --overlay-full: rgb(255, 0, 210);
+  --overlay-mid: rgba(255, 0, 210, .5);
+  --overlay-dim: rgba(255, 0, 210, .2);
 
-  --text-bright: rgb(255, 46, 210);
-  --text-mid: rgb(255,0,210);
+  --text-brightest: white;
+  --text-bright: rgb(255, 150, 225);
+  --text-mid: rgb(255, 46, 210);
   --font-large: 32pt;
-  --font-med: 16pt;
+  --font-med: 20pt;
 
   --borders: 2px solid var(--text-bright);
-
 }
+
 /* //////////////////////////// VAR \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
 .nav {
   background-color: var(--overlay-mid) !important;
-  /* top: 0px !important;
-  position: absolute !important; */
+  width: 100% !important;
+  top: 0px !important;
+
 }
 
 /* //////////////////////////// CONTAINERS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-.border{
+.border {
   border: var(--borders);
 }
-/* //////////////////////////// TEXT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
 
-h1, h2, h3, h4, h5, h6 {
-  color: var(--text-bright);
-  text-transform:uppercase;  
+.container {
+  min-width: 100% !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }
 
-p, span, a {
-  font-size:var(--font-med);
+
+.content {
+  text-align: center !important;
+
+}
+
+.card-cont {
+  display: flex;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.cardtext {
+  justify-content: center;
+  text-align: center;
+}
+
+.cardItemText {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* //////////////////////////// TEXT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text-bright);
+  text-transform: uppercase;
+}
+
+p,
+span,
+a {
+  font-size: var(--font-med);
   color: var(--text-mid);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-size: var(--font-large);
 }
 
@@ -53,23 +94,50 @@ h1 {
 }
 
 /* //////////////////////////// CARDS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
-.card-cont{
-  display: flex;
-  flex-wrap: wrap;
-  
-}
-
 
 .card {
   background-color: var(--overlay-dim);
   box-shadow: rgba(240, 46, 170, 0.4) -5px 5px, rgba(240, 46, 170, 0.3) -10px 10px, rgba(240, 46, 170, 0.2) -15px 15px, rgba(240, 46, 170, 0.1) -20px 20px, rgba(240, 46, 170, 0.05) -25px 25px;
-  max-width: 40vw;
-  min-width: 20vw;
+  min-width: 15vw !important;
   padding: 5px;
-  margin: 2px;
+  margin: 1%;
 }
 
+/* //////////////////////////// IMAGES \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
 .windArrow {
-  max-width: 5em;
+  max-width: 2.5em;
   filter: invert();
+}
+
+.weatherIcon {
+  min-width: 10vw;
+}
+
+/* //////////////////////////// FORM \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+
+.form-control,
+.btn {
+  background: none;
+  color: var(--text-bright);
+  border: var(--borders);
+}
+
+.form-control:hover,
+.btn:hover {
+  background-color: var(--overlay-dim);
+  color: var(--text-brightest);
+  border: var(--borders);
+}
+
+.form-control:active,
+.form-control:focus,
+.btn:active {
+  background-color: var(--overlay-mid);
+  color: var(--text-brightest);
+  border: var(--borders);
+}
+
+::placeholder {
+  color: white;
 }

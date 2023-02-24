@@ -1,41 +1,37 @@
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
-import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import '../App.css';
 
+function NavigationBar(props) {
 
-function NavigationBar() {
-const [search, userCity] = useState("");
+  const searchClicked = (event) => {
+    // prevent page reload
+    event.preventDefault();
 
-
-
-const searchPressed = (event) => {
-  event.preventDefault();
-  // console.log("Search pressed");
-
-  console.log(event);
-
-};
+  };
 
   return (
     <Container>
-      <Navbar className="nav">
+      <Navbar className="nav p-2">
         <Container>
-          <Navbar.Brand>WEATHER.APP</Navbar.Brand>
-          <Form className="d-flex" onSubmit={searchPressed}>
+          <h3>WEATHER.APP</h3>
+          <Form className="d-flex" onSubmit={searchClicked}  >
             <Form.Control
               type="search"
               placeholder="Search"
               className="me-2"
               aria-label="Search"
-              onChange={(input) => userCity(input.target.value)}
-              
-            />
-            <Button variant="outline-success"
-            type="submit"
-            >Search</Button>
+              id="userCity" />
+            <Button className="btn"
+              onClick={() => {
+                props.setLocation(document.getElementById("userCity").value)
+              }}
+              variant="outline-success"
+              type="button">
+              Search
+            </Button>
           </Form>
         </Container>
       </Navbar>
@@ -44,7 +40,3 @@ const searchPressed = (event) => {
 }
 
 export default NavigationBar;
-
-
-
-// 

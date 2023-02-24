@@ -1,6 +1,4 @@
 import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Card';
-import Container from 'react-bootstrap/Card';
 import arrow from '../resources/arrow.svg';
 
 
@@ -14,20 +12,27 @@ function WeatherCard(props) {
     <>
       <Card className="card">
         <div key={weather.id}>
-          <Card.Body>
+          <Card.Body className="cardtext">
             <Card.Title>
               <h1>{weather.date}</h1>
             </Card.Title>
             <Card.Text>
-              <img id="icon" src={weather.icon} alt="weather icon" />
+              <img id="icon" className="weatherIcon" src={weather.icon} alt="weather icon" />
               <p id="description">{weather.description}</p>
-              <div>
-                <p id="minTemp"> Minimum: {weather.min_temp}°C</p>
-                <p id="maxTemp"> Maximum: {weather.max_temp}°C</p>
+              <div className="cardItemText">
+                <span id="minTemp"> Minimum:</span><span>{weather.min_temp}°C</span>
               </div>
-              <p id="windSpeed">Wind speed: {weather.wind_speed} m/s</p>
-              <img className="windArrow" src={arrow}
-                style={{ transform: `rotate(${weather.wind_dir}deg)` }} />
+              <div className='cardItemText'>
+                <span id="maxTemp"> Maximum:</span> <span>{weather.max_temp}°C</span>
+              </div>
+              <div className='cardItemText'>
+                <span id="windSpeed">Wind:</span>
+                <div>
+                  <img className="windArrow" src={arrow}
+                    style={{ transform: `rotate(${weather.wind_dir}deg)` }} />
+                  <span style={{ marginLeft: `1em`}}>{weather.wind_speed} m/s</span>
+                </div>
+              </div>
             </Card.Text>
           </Card.Body>
         </div>
