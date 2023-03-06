@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/api-weather-site/static/css/main.e1916bde.css",
+    "main.js": "/api-weather-site/static/js/main.440b0a5c.js",
+    "static/js/787.0cadd5b6.chunk.js": "/api-weather-site/static/js/787.0cadd5b6.chunk.js",
+    "static/media/background_veve.jpg": "/api-weather-site/static/media/background_veve.54c3de378a45fa4eecfb.jpg",
+    "index.html": "/api-weather-site/index.html",
+    "static/media/arrow.svg": "/api-weather-site/static/media/arrow.8a41b285c04cccd36a359a63e73524c2.svg",
+    "main.e1916bde.css.map": "/api-weather-site/static/css/main.e1916bde.css.map",
+    "main.440b0a5c.js.map": "/api-weather-site/static/js/main.440b0a5c.js.map",
+    "787.0cadd5b6.chunk.js.map": "/api-weather-site/static/js/787.0cadd5b6.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e1916bde.css",
+    "static/js/main.440b0a5c.js"
+  ]
+}
